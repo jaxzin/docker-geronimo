@@ -12,6 +12,7 @@ RUN /bin/tar -xzf /apps/geronimo-tomcat7-javaee6-web-3.0.1-bin.tar.gz
 
 #ENV JAVA_HOME $(readlink -f /usr/bin/java | sed "s:bin/java::")
 ENV JAVA_HOME /usr/lib/jvm/java-6-openjdk-amd64/
+ENV GERONIMO_HOME /apps/geronimo-tomcat7-javaee6-web-3.0.1/
 
 
 EXPOSE 1050
@@ -26,4 +27,5 @@ EXPOSE 8443
 EXPOSE 9999
 EXPOSE 61616
 
-CMD ["/apps/geronimo-tomcat7-javaee6-web-3.0.1/bin/geronimo", "run"]
+WORKDIR $GERONIMO_HOME/bin/
+CMD ["./geronimo", "run"]
